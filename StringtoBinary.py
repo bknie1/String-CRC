@@ -2,38 +2,64 @@
 # Assignment 2
 # Brandon Knieriem
 # Goals:
-# 	Write the program.
+# 	- Generate bit sequence based on input.
+# 	- Query loop to generate 1+ bit sequence.
+# 	- Process input as string.
+# 	- fx1: Takes single char. Returns binary.
+# 		- ord() function returns index in ASCII code.
+# 		- Generate a list of 1's, 0's.
+# 	- fx2: Takes bin list. Returns error correction 12-bit list.
+# 		- Calculate the correct bits.
+# 	- Create a single binary list comprised of each 12-bit sequence.
+# 	- fx3: Print.
 #IMPORTS#########################################################
 
 import sys
 
 #FUNCTIONS#######################################################
-def input_char() :
-	value = input("Enter a single character, string, or 'quit': ")
-	if(value == 'quit') : sys.exit()
-	if(len(value) != 1) :
+def input_text() :
+	text = input("Enter a single character, string, or 'quit': ")
+	if(text == 'quit') : sys.exit()
+	if(len(text) < 1) :
 		print("Error: Invalid entry.")
 		input_char()
-	return value
+	return text
 #----------------------------------------------------------------
-def to_binary(value) :
-	int_part = ord(value) # Find ASCII code index.
-	bin_int = []
-	# Convert to Binary
-	while int_part != 0 :
-		if int_part % 2 == 0 : # If there is no remainder...
-			bin_int.append(0) # Binary 0.
-		else : # If there is a remainder... there can only be '1'.
-			bin_int.append(1)
-		int_part //= 2
-	print("Binary value of", value, ":", end=' ')
-	for i in bin_int :
-		print(bin_int[i], end="")
-	print("")
+# From lecture. Simple single value mod 2 conversion.
+# 35: ord() function returns index in ASCII code.
+def value_to_binary (value) :
+	if value == "" :
+		binary = "0"
+	else :
+		binary = ""
+		value = ord(value)
+
+		while value != 0 :
+			if value % 2 == 0 :
+				binary = "0" + binary
+			else :
+				binary = "1" + binary
+			value //= 2
+
+	return binary
 #----------------------------------------------------------------
-#
+def print_list(text) :
+	for i in text :
+		print(i, end="")
+	print("\n")
+#----------------------------------------------------------------
 #MAIN############################################################
+# Loops until user terminates the program via command.
+# Takes string of text and converts it, char by char, to binary.
+# Each 8 bit set adds 4 CRC bits.
 print("\tAssignment 3: String to Binary")
 while True :
-	value = input_char()
-	to_binary(value)
+	text = []
+	binary = []
+
+	text = input_text()
+
+	for i in text :
+		binary.append(value_to_binary(i))
+
+	print_list(binary)
