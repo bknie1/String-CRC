@@ -31,5 +31,4 @@ while True :
 	text = stb_fx.input_text()
 	for i in text :
 		binary.append(stb_fx.value_to_binary(i))
-
 	stb_fx.print_list(binary)

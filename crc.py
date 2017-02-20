@@ -20,7 +20,6 @@ def insert_bit(binary, check, pos) :
 		binary.insert(pos, 0)
 	else : # If False/Odd, add 1.
 		binary.insert(pos, 1)
-	print_bin(len(binary), binary) # DEBUG
 	return binary
 #-----------------------------------------------------------------
 # d1, d2, d4, d5, d7. Adding c1/pos. 0
@@ -29,7 +28,6 @@ def insert_bit(binary, check, pos) :
 # 	  d3 = 2 	d4 = 3		c8 =  		d5 = 4		d6 = 5
 # 	  d7 = 6	d8 = 7
 def check_c1(binary) :
-	print_bin(len(binary), binary) # DEBUG
 	eval_digits = [
 	binary[0], binary[1], binary[3], binary[4], binary[6]]
 	check = evaluate(eval_digits)
@@ -46,7 +44,6 @@ def check_c2(binary) :
 	binary[1], binary[3], binary[4], binary[6], binary[7]]
 	check = evaluate(eval_digits)
 	binary = insert_bit(binary, check, 1) # 1 is c2's position.
-	print_bin(binary) # DEBUG
 	return binary
 #-----------------------------------------------------------------
 # d2, d3, d4, d8. Adding c4/pos 3.
@@ -58,7 +55,6 @@ def check_c4(binary) :
 	eval_digits = [binary[3], binary[4], binary[5], binary[9] ]
 	check = evaluate(eval_digits)
 	binary = insert_bit(binary, check, 3) # 0 is c4's position.
-	print_bin(binary) # DEBUG
 	return binary
 #-----------------------------------------------------------------
 # d5, d6, d7, d8. Adding c8/pos. 7.
@@ -70,7 +66,6 @@ def check_c8(binary) :
 	eval_digits = [binary[7], binary[8], binary[9], binary[10] ]
 	check = evaluate(eval_digits)
 	binary = insert_bit(binary, check, 7) # 0 is c8's position.
-	print_bin(binary) # DEBUG
 	return binary
 #-----------------------------------------------------------------
 #Odd or even number of '1's? Even = True, Odd = False
