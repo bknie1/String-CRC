@@ -27,7 +27,7 @@ def value_to_binary (value) :
 		else :
 			binary = "1" + binary
 		value //= 2
-	if len(binary) == 7 : binary = "0" + binary
+	if len(binary) == 7 : binary = "0" + binary # ???
 	binary = add_error_checking(binary)
 	return binary
 #----------------------------------------------------------------
@@ -40,10 +40,5 @@ def add_error_checking(binary) :
 	return binary
 #----------------------------------------------------------------
 def print_list(binary) :
-	total = 0
-	for i in binary :
-		for k in i :
-			total += 1
-			print(k, end="")
-	print("\n")
+	print(''.join(([''.join([str(e) for e in i]) for i in binary])))
 #----------------------------------------------------------------
