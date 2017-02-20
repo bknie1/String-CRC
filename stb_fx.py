@@ -45,5 +45,5 @@ def print_list(binary) :
 		for k in i :
 			total += 1
 			print(k, end="")
-	# print("\nDigits:", total, "\n") # DEBUG
+	print("\n")
 #----------------------------------------------------------------
