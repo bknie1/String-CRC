@@ -34,7 +34,6 @@ def value_to_binary (value) :
 			binary = "0" + binary
 			i += 1
 
-	print("Length:", len(binary))
 	binary = add_error_checking(binary)
 	return binary
 #----------------------------------------------------------------
