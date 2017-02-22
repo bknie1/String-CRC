@@ -27,7 +27,14 @@ def value_to_binary (value) :
 		else :
 			binary = "1" + binary
 		value //= 2
-	if len(binary) == 7 : binary = "0" + binary # ???
+	 # If the length < 8 bits, add 0's to make up for it.
+	if len(binary) < 8 :
+		i = 0
+		while i <= (8 - len(binary)) :
+			binary = "0" + binary
+			i += 1
+
+	print("Length:", len(binary))
 	binary = add_error_checking(binary)
 	return binary
 #----------------------------------------------------------------
@@ -40,5 +47,5 @@ def add_error_checking(binary) :
 	return binary
 #----------------------------------------------------------------
 def print_list(binary) :
-	print(''.join(([''.join([str(e) for e in i]) for i in binary])))
+	print(' '.join(([''.join([str(e) for e in i]) for i in binary])))
 #----------------------------------------------------------------
